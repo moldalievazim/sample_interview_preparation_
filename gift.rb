@@ -3,7 +3,7 @@ class Gift
   
     def initialize(name, color)
       @name = name
-      @color = colour
+      @color = color # fixed colour
     end
   
     def description

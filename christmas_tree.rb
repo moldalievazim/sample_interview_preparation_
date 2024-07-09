@@ -19,18 +19,19 @@ Gift: Car, wrapped in Green paper
 Turning off the lights...
 Christmas tree with 5 feet, 10 ornaments, and lights off
 
+
 =end
 class ChristmasTree
     attr_accessor :height, :ornaments, :lights_on
   
     def initialize(height)
       @height = height
-      @ornament = 0
+      @ornaments = 0
       @lights_on = false
     end
   
     def add_ornaments(count)
-      @ornaments += count
+      @ornaments += count  #UndefinedMethod @ornaments
     end
   
     def lights_status
@@ -39,6 +40,10 @@ class ChristmasTree
       else
         return "light is off"
       end
+    end
+
+    def no_lights_status
+      "Christmas tree with #{@height} feet and #{@ornaments} ornaments"
     end
   
     def to_string
@@ -54,23 +59,24 @@ class ChristmasTree
     end
   
     def self.celebrate(height, gifts)
-      christmasTree = ChristmasTreee.new(height)
+      christmasTree = ChristmasTree.new(height) #NameError ChristmasTreee
       puts "Building a #{height}-foot Christmas tree"
-      puts christmasTree.to_string
+      puts christmasTree.no_lights_status
       puts "Adding ornaments..."
-      christmasTree.add_decoration(10)
-      puts christmasTree.to_string
+      christmasTree.add_ornaments(10) #NameError add_decoration
+      puts christmasTree.no_lights_status
       puts "Turning on the lights..."
-      christmasTree.light_on
+      christmasTree.turn_on_light 
       puts christmasTree.to_string
   
       puts "Placing #{gifts.count} gifts under the tree"
       gifts.each do |gift|
-        
+        puts gift.description
       end
   
       puts "Turning off the lights..."
-      christmasTree.light_off
+
+      christmasTree.turn_off_light #undefined method light_off
       puts christmasTree.to_string
   
       christmasTree
